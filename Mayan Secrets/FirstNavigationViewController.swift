@@ -17,10 +17,10 @@ class FirstNavigationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        valueKey()
+        valueFirstKey()
     }
     
-    private func valueKey() {
+    private func valueFirstKey() {
         view.addSubview(backbackbacksplash)
         view.addSubview(lololoading)
         circleLogicSplashAnimation()

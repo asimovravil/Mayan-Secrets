@@ -19,10 +19,10 @@ class ImportantViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        valueKey()
+        valueImportantKey()
     }
     
-    private func valueKey() {
+    private func valueImportantKey() {
         view.addSubview(importantBack)
         view.addSubview(avatar)
         view.addSubview(but1button)
@@ -51,6 +51,7 @@ class ImportantViewController: UIViewController {
         but3button.translatesAutoresizingMaskIntoConstraints = false
 
         but4button.setImage(UIImage(named: "but4button"), for: .normal)
+        but4button.addTarget(self, action: #selector(but4buttonKek), for: .touchUpInside)
         but4button.translatesAutoresizingMaskIntoConstraints = false
         
         if UIScreen.main.bounds.size.height >= 812 {
@@ -89,6 +90,11 @@ class ImportantViewController: UIViewController {
     
     @objc private func but3buttonKek() {
         let controller = LawViewController()
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    @objc private func but4buttonKek() {
+        let controller = OptionsViewController()
         self.navigationController?.pushViewController(controller, animated: true)
     }
 }

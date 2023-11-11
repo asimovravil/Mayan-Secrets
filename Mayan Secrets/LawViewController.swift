@@ -16,11 +16,11 @@ class LawViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        valueKey()
-        setupTitleView()
+        valueLawKey()
+        setupTitleLawView()
     }
     
-    private func valueKey() {
+    private func valueLawKey() {
         view.addSubview(lawBack)
         
         lawBack.image = UIImage(named: "lawBack")
@@ -36,18 +36,18 @@ class LawViewController: UIViewController {
         ])
         
         if let backImage = UIImage(named: "backControllerBack")?.withRenderingMode(.alwaysOriginal) {
-            let backButton = UIBarButtonItem(image: backImage, style: .plain, target: self, action: #selector(backButtonTapped))
+            let backButton = UIBarButtonItem(image: backImage, style: .plain, target: self, action: #selector(backButtonKek))
             navigationItem.leftBarButtonItem = backButton
         }
         
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
     
-    @objc func backButtonTapped() {
+    @objc func backButtonKek() {
         self.navigationController?.popViewController(animated: true)
     }
     
-    private func setupTitleView() {
+    private func setupTitleLawView() {
         let titleImageView = UIImageView(image: UIImage(named: "rules"))
         titleImageView.contentMode = .scaleAspectFit
         navigationItem.titleView = titleImageView
