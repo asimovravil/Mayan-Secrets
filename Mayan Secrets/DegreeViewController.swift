@@ -37,7 +37,7 @@ class DegreeViewController: UIViewController {
         
         mainCollectionView.dataSource = self
         mainCollectionView.delegate = self
-        mainCollectionView.register(LevelCollectionViewCell.self, forCellWithReuseIdentifier: LevelCollectionViewCell.reuseID)
+        mainCollectionView.register(DegreeCollectionViewCell.self, forCellWithReuseIdentifier: DegreeCollectionViewCell.identificator)
         mainCollectionView.showsVerticalScrollIndicator = false
         mainCollectionView.showsHorizontalScrollIndicator = false
         mainCollectionView.backgroundColor = .clear
@@ -139,9 +139,9 @@ extension DegreeViewController: UICollectionViewDataSource, UICollectionViewDele
         switch section {
         case .degrees:
             guard let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: LevelCollectionViewCell.reuseID,
+                withReuseIdentifier: DegreeCollectionViewCell.identificator,
                 for: indexPath
-            ) as? LevelCollectionViewCell else {
+            ) as? DegreeCollectionViewCell else {
                 fatalError("Could not cast to LevelCollectionViewCell")
             }
             let levelIndex = indexPath.row + 1
@@ -165,6 +165,10 @@ extension DegreeViewController: UICollectionViewDataSource, UICollectionViewDele
                 }
             } else {
                 cell.levelButton.setBackgroundImage(nil, for: .normal)
+            }
+            cell.degreeButtonTappedHandler = {
+                let controller = PlayViewController()
+                self.navigationController?.pushViewController(controller, animated: true)
             }
             return cell
         }
