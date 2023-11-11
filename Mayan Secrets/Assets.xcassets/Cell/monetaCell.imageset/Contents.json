@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "monetaCell.pdf",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

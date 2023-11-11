@@ -8,17 +8,21 @@
 import UIKit
 
 class PlayViewController: UIViewController {
-    
+
     private let gameBack = UIImageView()
     private let pauseCard = UIImageView()
     private let continuePlayKekButton = UIButton()
     private let homePlayKekButton = UIButton()
+    private let shadowShamanCell1 = UIImageView()
+    private let shadowShamanCell2 = UIImageView()
+    private let kingCell1 = UIImageView()
+    private let kingCell2 = UIImageView()
 
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         valueGameKey()
         setupTitleLawView()
     }
@@ -28,6 +32,10 @@ class PlayViewController: UIViewController {
         view.addSubview(pauseCard)
         view.addSubview(continuePlayKekButton)
         view.addSubview(homePlayKekButton)
+        view.addSubview(shadowShamanCell1)
+        view.addSubview(shadowShamanCell2)
+        view.addSubview(kingCell1)
+        view.addSubview(kingCell2)
         
         gameBack.image = UIImage(named: "gameBack")
         gameBack.layer.masksToBounds = true
@@ -39,6 +47,26 @@ class PlayViewController: UIViewController {
         pauseCard.contentMode = .scaleAspectFill
         pauseCard.isHidden = true
         pauseCard.translatesAutoresizingMaskIntoConstraints = false
+        
+        shadowShamanCell1.image = UIImage(named: "shadowshamanCell")
+        shadowShamanCell1.layer.masksToBounds = true
+        shadowShamanCell1.contentMode = .scaleAspectFill
+        shadowShamanCell1.translatesAutoresizingMaskIntoConstraints = false
+        
+        shadowShamanCell2.image = UIImage(named: "shadowshamanCell")
+        shadowShamanCell2.layer.masksToBounds = true
+        shadowShamanCell2.contentMode = .scaleAspectFill
+        shadowShamanCell2.translatesAutoresizingMaskIntoConstraints = false
+        
+        kingCell1.image = UIImage(named: "kingCell")
+        kingCell1.layer.masksToBounds = true
+        kingCell1.contentMode = .scaleAspectFill
+        kingCell1.translatesAutoresizingMaskIntoConstraints = false
+        
+        kingCell2.image = UIImage(named: "kingCell")
+        kingCell2.layer.masksToBounds = true
+        kingCell2.contentMode = .scaleAspectFill
+        kingCell2.translatesAutoresizingMaskIntoConstraints = false
         
         continuePlayKekButton.setImage(UIImage(named: "continue"), for: .normal)
         continuePlayKekButton.addTarget(self, action: #selector(continuePlayKekButtonKek), for: .touchUpInside)
@@ -65,6 +93,17 @@ class PlayViewController: UIViewController {
             continuePlayKekButton.topAnchor.constraint(equalTo: pauseCard.topAnchor, constant: 135),
             continuePlayKekButton.leadingAnchor.constraint(equalTo: view.centerXAnchor, constant: 20),
             
+            shadowShamanCell1.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 94),
+            shadowShamanCell1.bottomAnchor.constraint(equalTo: shadowShamanCell2.topAnchor, constant: -190),
+            
+            shadowShamanCell2.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 94),
+            shadowShamanCell2.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -192),
+            
+            kingCell1.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -94),
+            kingCell1.bottomAnchor.constraint(equalTo: kingCell2.topAnchor, constant: -190),
+            
+            kingCell2.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -94),
+            kingCell2.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -192),
         ])
         
         if let backImage = UIImage(named: "continueButton")?.withRenderingMode(.alwaysOriginal) {
@@ -101,5 +140,3 @@ class PlayViewController: UIViewController {
         self.navigationController?.pushViewController(controller, animated: true)
     }
 }
-
-
