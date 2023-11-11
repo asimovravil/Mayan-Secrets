@@ -100,9 +100,11 @@ class BuyViewController: UIViewController {
         coin200.translatesAutoresizingMaskIntoConstraints = false
         
         coin50Button.setImage(UIImage(named: "buyNonSuccess"), for: .normal)
+        coin50Button.addTarget(self, action: #selector(coin50ButtonKek), for: .touchUpInside)
         coin50Button.translatesAutoresizingMaskIntoConstraints = false
         
         coin200Button.setImage(UIImage(named: "buyNonSuccess"), for: .normal)
+        coin200Button.addTarget(self, action: #selector(coin200ButtonKek), for: .touchUpInside)
         coin200Button.translatesAutoresizingMaskIntoConstraints = false
         
         wallpapersImage.image = UIImage(named: "wallpapers")
@@ -183,6 +185,30 @@ class BuyViewController: UIViewController {
         let alert = UIAlertController(title: "Not Enough Coins", message: "You need at least coins to accept this item.", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         present(alert, animated: true, completion: nil)
+    }
+    
+    @objc func coin50ButtonKek() {
+        let coinPriceLolKek = UserDefaults.standard.integer(forKey: "coinPriceLolKek")
+        
+        if coinPriceLolKek >= 50 {
+            coin50Button.setImage(UIImage(named: "buySuccess"), for: .normal)
+        } else {
+            let alert = UIAlertController(title: "Insufficient Coins", message: "You need at least 50 coins to purchase this item.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    @objc func coin200ButtonKek() {
+        let coinPriceLolKek = UserDefaults.standard.integer(forKey: "coinPriceLolKek")
+        
+        if coinPriceLolKek >= 200 {
+            coin200Button.setImage(UIImage(named: "buySuccess"), for: .normal)
+        } else {
+            let alert = UIAlertController(title: "Insufficient Coins", message: "You need at least 200 coins to purchase this item.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            present(alert, animated: true, completion: nil)
+        }
     }
 }
 
