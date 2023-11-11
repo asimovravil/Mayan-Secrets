@@ -7,6 +7,17 @@
 
 import UIKit
 
+struct MayanSecretsVariables {
+    static var isVibrationOn: Bool {
+        get {
+            return UserDefaults.standard.bool(forKey: "isVibrationOn")
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "isVibrationOn")
+        }
+    }
+}
+
 class OptionsViewController: UIViewController {
     
     var vibrationOptSuccess: Bool = false {
@@ -187,4 +198,17 @@ class OptionsViewController: UIViewController {
     }
 }
 
-
+enum MayanSecretsVibration {
+    
+    static func send(_ type: UINotificationFeedbackGenerator.FeedbackType) {
+        if MayanSecretsVariables.isVibrationOn {
+            UINotificationFeedbackGenerator().notificationOccurred(type)
+        }
+    }
+    
+    static func select() {
+        if MayanSecretsVariables.isVibrationOn {
+            UIImpactFeedbackGenerator(style: .light).impactOccurred()
+        }
+    }
+}

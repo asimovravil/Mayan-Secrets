@@ -195,12 +195,16 @@ class BuyViewController: UIViewController {
     }
     
     @objc func wallpapersButtonKek() {
+        MayanSecretsVibration.select()
+        
         let alert = UIAlertController(title: "Not Enough Coins", message: "You need at least coins to accept this item.", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         present(alert, animated: true, completion: nil)
     }
     
     @objc func coin50ButtonKek() {
+        MayanSecretsVibration.select()
+        
         let coinPriceLolKek = UserDefaults.standard.integer(forKey: "coinPriceLolKek")
         
         if coinPriceLolKek >= 50 {
@@ -219,6 +223,8 @@ class BuyViewController: UIViewController {
     }
     
     @objc func coin200ButtonKek() {
+        MayanSecretsVibration.select()
+        
         let coinPriceLolKek = UserDefaults.standard.integer(forKey: "coinPriceLolKek")
         
         if coinPriceLolKek >= 200 {
