@@ -17,6 +17,8 @@
 		F1553AA82AFF5C6200303145 /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1553AA72AFF5C6200303145 /* OptionsViewController.swift */; };
 		F1553AAA2AFF856100303145 /* BuyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1553AA92AFF856100303145 /* BuyViewController.swift */; };
 		F1553AAD2AFF869100303145 /* Stick-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F1553AAC2AFF869100303145 /* Stick-Regular.ttf */; };
+		F1553AB02AFF8FED00303145 /* DegreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1553AAF2AFF8FED00303145 /* DegreeViewController.swift */; };
+		F1553AB22AFF900200303145 /* LevelCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1553AB12AFF900200303145 /* LevelCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		F1553AA72AFF5C6200303145 /* OptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
 		F1553AA92AFF856100303145 /* BuyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyViewController.swift; sourceTree = "<group>"; };
 		F1553AAC2AFF869100303145 /* Stick-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Stick-Regular.ttf"; sourceTree = "<group>"; };
+		F1553AAF2AFF8FED00303145 /* DegreeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DegreeViewController.swift; sourceTree = "<group>"; };
+		F1553AB12AFF900200303145 /* LevelCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +76,8 @@
 				F1553AA92AFF856100303145 /* BuyViewController.swift */,
 				F1553AA52AFF583E00303145 /* LawViewController.swift */,
 				F1553AA72AFF5C6200303145 /* OptionsViewController.swift */,
+				F1553AAF2AFF8FED00303145 /* DegreeViewController.swift */,
+				F1553AB12AFF900200303145 /* LevelCollectionViewCell.swift */,
 				F1553A982AFE319F00303145 /* Assets.xcassets */,
 				F1553A9A2AFE319F00303145 /* LaunchScreen.storyboard */,
 				F1553A9D2AFE319F00303145 /* Info.plist */,
@@ -158,9 +164,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1553AB22AFF900200303145 /* LevelCollectionViewCell.swift in Sources */,
 				F1553A942AFE319D00303145 /* FirstNavigationViewController.swift in Sources */,
 				F1553AA62AFF583E00303145 /* LawViewController.swift in Sources */,
 				F1553AA42AFF534100303145 /* ImportantViewController.swift in Sources */,
+				F1553AB02AFF8FED00303145 /* DegreeViewController.swift in Sources */,
 				F1553AA82AFF5C6200303145 /* OptionsViewController.swift in Sources */,
 				F1553A902AFE319D00303145 /* AppDelegate.swift in Sources */,
 				F1553AAA2AFF856100303145 /* BuyViewController.swift in Sources */,

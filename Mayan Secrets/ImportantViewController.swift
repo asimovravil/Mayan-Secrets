@@ -41,6 +41,7 @@ class ImportantViewController: UIViewController {
         avatar.translatesAutoresizingMaskIntoConstraints = false
         
         but1button.setImage(UIImage(named: "but1button"), for: .normal)
+        but1button.addTarget(self, action: #selector(but1buttonKek), for: .touchUpInside)
         but1button.translatesAutoresizingMaskIntoConstraints = false
 
         but2button.setImage(UIImage(named: "but2button"), for: .normal)
@@ -89,17 +90,22 @@ class ImportantViewController: UIViewController {
         ])
     }
     
-    @objc private func but2buttonKek() {
+    @objc func but1buttonKek() {
+        let controller = DegreeViewController()
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    @objc func but2buttonKek() {
         let controller = BuyViewController()
         self.navigationController?.pushViewController(controller, animated: true)
     }
     
-    @objc private func but3buttonKek() {
+    @objc func but3buttonKek() {
         let controller = LawViewController()
         self.navigationController?.pushViewController(controller, animated: true)
     }
     
-    @objc private func but4buttonKek() {
+    @objc func but4buttonKek() {
         let controller = OptionsViewController()
         self.navigationController?.pushViewController(controller, animated: true)
     }
