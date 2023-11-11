@@ -47,6 +47,7 @@ class ImportantViewController: UIViewController {
         but2button.translatesAutoresizingMaskIntoConstraints = false
 
         but3button.setImage(UIImage(named: "but3button"), for: .normal)
+        but3button.addTarget(self, action: #selector(but3buttonKek), for: .touchUpInside)
         but3button.translatesAutoresizingMaskIntoConstraints = false
 
         but4button.setImage(UIImage(named: "but4button"), for: .normal)
@@ -84,5 +85,10 @@ class ImportantViewController: UIViewController {
             
             but4button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
         ])
+    }
+    
+    @objc private func but3buttonKek() {
+        let controller = LawViewController()
+        self.navigationController?.pushViewController(controller, animated: true)
     }
 }

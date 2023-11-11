@@ -11,11 +11,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
     var navigation: UINavigationController!
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        guard let scene = (scene as? UIWindowScene) else { return }
-        
-        window = UIWindow(windowScene: scene)
-        window?.overrideUserInterfaceStyle = .dark
-        window?.rootViewController = ImportantViewController()
-        window?.makeKeyAndVisible()
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+        let window = UIWindow(windowScene: windowScene)
+        window.overrideUserInterfaceStyle = .light
+        window.rootViewController =
+        UINavigationController(rootViewController: ImportantViewController())
+        window.makeKeyAndVisible()
+        self.window = window
     }
 }

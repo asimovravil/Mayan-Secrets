@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "lawBack.pdf",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
