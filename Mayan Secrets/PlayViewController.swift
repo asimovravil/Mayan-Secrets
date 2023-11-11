@@ -210,12 +210,10 @@ class PlayViewController: UIViewController {
     }
 
     private func finishDrawing(to endPoint: CGPoint) {
-        guard let targetViews = [shadowShamanCell1, shadowShamanCell2, kingCell1, kingCell2] as? [UIView] else { return }
+        guard let gestureOrigin = gestureOrigin as? UIImageView else { return }
 
-        let isEndPointValid = targetViews.contains { view in
-            let viewFrame = view.convert(view.bounds, to: self.view)
-            return viewFrame.contains(endPoint)
-        }
+        let isEndPointValid = (gestureOrigin == shadowShamanCell1 || gestureOrigin == shadowShamanCell2) && (endPointInsideCell(endPoint, cell: shadowShamanCell1) || endPointInsideCell(endPoint, cell: shadowShamanCell2)) ||
+                              (gestureOrigin == kingCell1 || gestureOrigin == kingCell2) && (endPointInsideCell(endPoint, cell: kingCell1) || endPointInsideCell(endPoint, cell: kingCell2))
 
         if isEndPointValid {
             currentDrawingPath?.addLine(to: endPoint)
@@ -225,14 +223,12 @@ class PlayViewController: UIViewController {
             drawingLayers.removeLast()
         }
         
-        if let gestureOrigin = gestureOrigin as? UIImageView {
-            if (gestureOrigin == shadowShamanCell1 || gestureOrigin == shadowShamanCell2) &&
-                (endPointInsideCell(endPoint, cell: shadowShamanCell1) || endPointInsideCell(endPoint, cell: shadowShamanCell2)) {
-                isShadowShamanLineFormed = true
-            } else if (gestureOrigin == kingCell1 || gestureOrigin == kingCell2) &&
-                      (endPointInsideCell(endPoint, cell: kingCell1) || endPointInsideCell(endPoint, cell: kingCell2)) {
-                isKingLineFormed = true
-            }
+        if (gestureOrigin == shadowShamanCell1 || gestureOrigin == shadowShamanCell2) &&
+            (endPointInsideCell(endPoint, cell: shadowShamanCell1) || endPointInsideCell(endPoint, cell: shadowShamanCell2)) {
+            isShadowShamanLineFormed = true
+        } else if (gestureOrigin == kingCell1 || gestureOrigin == kingCell2) &&
+                  (endPointInsideCell(endPoint, cell: kingCell1) || endPointInsideCell(endPoint, cell: kingCell2)) {
+            isKingLineFormed = true
         }
 
         if isShadowShamanLineFormed && isKingLineFormed {
