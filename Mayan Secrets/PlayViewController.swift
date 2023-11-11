@@ -9,6 +9,9 @@ import UIKit
 
 class PlayViewController: UIViewController {
 
+    private var isShadowShamanLineFormed = false
+    private var isKingLineFormed = false
+    
     private var gestureOrigin: UIView?
     
     private let gameBack = UIImageView()
@@ -221,5 +224,30 @@ class PlayViewController: UIViewController {
             drawingLayers.last?.removeFromSuperlayer()
             drawingLayers.removeLast()
         }
+        
+        if let gestureOrigin = gestureOrigin as? UIImageView {
+            if (gestureOrigin == shadowShamanCell1 || gestureOrigin == shadowShamanCell2) &&
+                (endPointInsideCell(endPoint, cell: shadowShamanCell1) || endPointInsideCell(endPoint, cell: shadowShamanCell2)) {
+                isShadowShamanLineFormed = true
+            } else if (gestureOrigin == kingCell1 || gestureOrigin == kingCell2) &&
+                      (endPointInsideCell(endPoint, cell: kingCell1) || endPointInsideCell(endPoint, cell: kingCell2)) {
+                isKingLineFormed = true
+            }
+        }
+
+        if isShadowShamanLineFormed && isKingLineFormed {
+            navigateToWinController()
+        }
+    }
+    
+    private func endPointInsideCell(_ endPoint: CGPoint, cell: UIImageView) -> Bool {
+        let viewFrame = cell.convert(cell.bounds, to: self.view)
+        return viewFrame.contains(endPoint)
+    }
+    
+    private func navigateToWinController() {
+        let controller = ImportantViewController()
+        controller.navigationItem.hidesBackButton = true
+        navigationController?.pushViewController(controller, animated: true)
     }
 }
