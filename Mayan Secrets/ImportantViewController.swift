@@ -31,6 +31,13 @@ class ImportantViewController: UIViewController {
         valueImportantKey()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let heartLolKek = UserDefaults.standard.integer(forKey: "heartAmount")
+        heartKekLabel.text = "\(heartLolKek)"
+    }
+    
     private func valueImportantKey() {
         view.addSubview(importantBack)
         view.addSubview(avatar)

@@ -37,6 +37,13 @@ class DegreeViewController: UIViewController {
         setupTitleDegreeView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let heartLolKek = UserDefaults.standard.integer(forKey: "heartAmount")
+        heartKekLabel.text = "\(heartLolKek)"
+    }
+    
     private func valueDegreeKey() {
         view.addSubview(backgroundView)
         view.addSubview(mainCollectionView)

@@ -9,6 +9,16 @@ import UIKit
 
 class BuyViewController: UIViewController {
     
+    var heartAmount: Int {
+        get {
+            return UserDefaults.standard.integer(forKey: "heartAmount")
+        }
+        set {
+            UserDefaults.standard.setValue(newValue, forKey: "heartAmount")
+            heartKekLabel.text = "\(newValue)"
+        }
+    }
+    
     private let shopBack = UIImageView()
     private let coinYellowKekImageView = UIImageView()
     private let coinPrice = UILabel()
@@ -43,6 +53,9 @@ class BuyViewController: UIViewController {
         
         let coinPriceLolKek = UserDefaults.standard.integer(forKey: "coinPriceLolKek")
         coinPrice.text = "\(coinPriceLolKek)"
+        
+        let heartLolKek = UserDefaults.standard.integer(forKey: "heartAmount")
+        heartKekLabel.text = "\(heartLolKek)"
     }
     
     private func valueLawKey() {
@@ -191,9 +204,15 @@ class BuyViewController: UIViewController {
         let coinPriceLolKek = UserDefaults.standard.integer(forKey: "coinPriceLolKek")
         
         if coinPriceLolKek >= 50 {
+            let newCoinBalance = coinPriceLolKek - 50
+            UserDefaults.standard.set(newCoinBalance, forKey: "coinPriceLolKek")
+            coinPrice.text = "\(newCoinBalance)"
+
+            heartAmount += 1
+
             coin50Button.setImage(UIImage(named: "buySuccess"), for: .normal)
         } else {
-            let alert = UIAlertController(title: "Insufficient Coins", message: "You need at least 50 coins to purchase this item.", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Insufficient Coins", message: "You need at least 50 coins to purchase a heart.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             present(alert, animated: true, completion: nil)
         }
@@ -203,9 +222,15 @@ class BuyViewController: UIViewController {
         let coinPriceLolKek = UserDefaults.standard.integer(forKey: "coinPriceLolKek")
         
         if coinPriceLolKek >= 200 {
+            let newCoinBalance = coinPriceLolKek - 200
+            UserDefaults.standard.set(newCoinBalance, forKey: "coinPriceLolKek")
+            coinPrice.text = "\(newCoinBalance)"
+
+            heartAmount += 1
+
             coin200Button.setImage(UIImage(named: "buySuccess"), for: .normal)
         } else {
-            let alert = UIAlertController(title: "Insufficient Coins", message: "You need at least 200 coins to purchase this item.", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Insufficient Coins", message: "You need at least 200 coins to purchase a heart.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             present(alert, animated: true, completion: nil)
         }
