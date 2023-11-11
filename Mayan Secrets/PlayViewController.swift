@@ -9,6 +9,8 @@ import UIKit
 
 class PlayViewController: UIViewController {
 
+    private var gestureOrigin: UIView?
+    
     private let gameBack = UIImageView()
     private let pauseCard = UIImageView()
     private let continuePlayKekButton = UIButton()
@@ -169,11 +171,13 @@ class PlayViewController: UIViewController {
 
         switch gesture.state {
         case .began:
+            gestureOrigin = draggedView
             startDrawing(from: draggedView.center, draggedView: draggedView)
         case .changed:
             updateDrawingPath(to: location)
         case .ended:
             finishDrawing(to: location)
+            gestureOrigin = nil
         default:
             break
         }
@@ -203,7 +207,19 @@ class PlayViewController: UIViewController {
     }
 
     private func finishDrawing(to endPoint: CGPoint) {
-        currentDrawingPath?.addLine(to: endPoint)
-        drawingLayers.last?.path = currentDrawingPath?.cgPath
+        guard let targetViews = [shadowShamanCell1, shadowShamanCell2, kingCell1, kingCell2] as? [UIView] else { return }
+
+        let isEndPointValid = targetViews.contains { view in
+            let viewFrame = view.convert(view.bounds, to: self.view)
+            return viewFrame.contains(endPoint)
+        }
+
+        if isEndPointValid {
+            currentDrawingPath?.addLine(to: endPoint)
+            drawingLayers.last?.path = currentDrawingPath?.cgPath
+        } else {
+            drawingLayers.last?.removeFromSuperlayer()
+            drawingLayers.removeLast()
+        }
     }
 }
