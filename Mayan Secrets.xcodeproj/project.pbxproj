@@ -21,6 +21,7 @@
 		F1553AB22AFF900200303145 /* DegreeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1553AB12AFF900200303145 /* DegreeCollectionViewCell.swift */; };
 		F1553AB42AFF97FB00303145 /* PlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1553AB32AFF97FB00303145 /* PlayViewController.swift */; };
 		F1F9D8EA2AFFAED000C7DE86 /* VictoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F9D8E92AFFAED000C7DE86 /* VictoryViewController.swift */; };
+		F1F9D8EC2AFFB0B200C7DE86 /* DefeatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F9D8EB2AFFB0B200C7DE86 /* DefeatViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		F1553AB12AFF900200303145 /* DegreeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DegreeCollectionViewCell.swift; sourceTree = "<group>"; };
 		F1553AB32AFF97FB00303145 /* PlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayViewController.swift; sourceTree = "<group>"; };
 		F1F9D8E92AFFAED000C7DE86 /* VictoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VictoryViewController.swift; sourceTree = "<group>"; };
+		F1F9D8EB2AFFB0B200C7DE86 /* DefeatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefeatViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +86,7 @@
 				F1553AB12AFF900200303145 /* DegreeCollectionViewCell.swift */,
 				F1553AB32AFF97FB00303145 /* PlayViewController.swift */,
 				F1F9D8E92AFFAED000C7DE86 /* VictoryViewController.swift */,
+				F1F9D8EB2AFFB0B200C7DE86 /* DefeatViewController.swift */,
 				F1553A982AFE319F00303145 /* Assets.xcassets */,
 				F1553A9A2AFE319F00303145 /* LaunchScreen.storyboard */,
 				F1553A9D2AFE319F00303145 /* Info.plist */,
@@ -179,6 +182,7 @@
 				F1F9D8EA2AFFAED000C7DE86 /* VictoryViewController.swift in Sources */,
 				F1553AB42AFF97FB00303145 /* PlayViewController.swift in Sources */,
 				F1553A902AFE319D00303145 /* AppDelegate.swift in Sources */,
+				F1F9D8EC2AFFB0B200C7DE86 /* DefeatViewController.swift in Sources */,
 				F1553AAA2AFF856100303145 /* BuyViewController.swift in Sources */,
 				F1553A922AFE319D00303145 /* SceneDelegate.swift in Sources */,
 			);

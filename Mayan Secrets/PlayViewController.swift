@@ -101,7 +101,7 @@ class PlayViewController: UIViewController {
         continuePlayKekButton.translatesAutoresizingMaskIntoConstraints = false
         
         homePlayKekButton.setImage(UIImage(named: "home"), for: .normal)
-        homePlayKekButton.addTarget(self, action: #selector(homePlayKekButtonKek), for: .touchUpInside)
+        homePlayKekButton.addTarget(self, action: #selector(homePlayButtonKek), for: .touchUpInside)
         homePlayKekButton.isHidden = true
         homePlayKekButton.translatesAutoresizingMaskIntoConstraints = false
         
@@ -161,7 +161,7 @@ class PlayViewController: UIViewController {
         homePlayKekButton.isHidden = true
     }
     
-    @objc func homePlayKekButtonKek() {
+    @objc func homePlayButtonKek() {
         let controller = ImportantViewController()
         controller.navigationItem.hidesBackButton = true
         self.navigationController?.pushViewController(controller, animated: true)

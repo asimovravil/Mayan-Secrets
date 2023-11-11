@@ -32,7 +32,7 @@ class VictoryViewController: UIViewController {
         winBack.translatesAutoresizingMaskIntoConstraints = false
         
         homeWinKekButton.setImage(UIImage(named: "home"), for: .normal)
-        homeWinKekButton.addTarget(self, action: #selector(homePlayKekButtonKek), for: .touchUpInside)
+        homeWinKekButton.addTarget(self, action: #selector(homePlayWinButtonKek), for: .touchUpInside)
         homeWinKekButton.translatesAutoresizingMaskIntoConstraints = false
         
         nextLevelWinKekButton.setImage(UIImage(named: "nextLevel"), for: .normal)
@@ -63,7 +63,7 @@ class VictoryViewController: UIViewController {
         ])
     }
     
-    @objc private func homePlayKekButtonKek() {
+    @objc private func homePlayWinButtonKek() {
         let controller = ImportantViewController()
         controller.navigationItem.hidesBackButton = true
         navigationController?.pushViewController(controller, animated: true)
