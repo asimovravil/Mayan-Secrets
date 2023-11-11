@@ -170,6 +170,13 @@ class PlayViewController: UIViewController {
     @objc private func handlePanGesture(_ gesture: UIPanGestureRecognizer) {
         guard let draggedView = gesture.view else { return }
 
+        if (draggedView == shadowShamanCell1 || draggedView == shadowShamanCell2) && isShadowShamanLineFormed {
+            return
+        }
+        if (draggedView == kingCell1 || draggedView == kingCell2) && isKingLineFormed {
+            return
+        }
+
         let location = gesture.location(in: view)
 
         switch gesture.state {
@@ -224,10 +231,10 @@ class PlayViewController: UIViewController {
         }
         
         if (gestureOrigin == shadowShamanCell1 || gestureOrigin == shadowShamanCell2) &&
-            (endPointInsideCell(endPoint, cell: shadowShamanCell1) || endPointInsideCell(endPoint, cell: shadowShamanCell2)) {
+            (endPointInsideCell(endPoint, cell: shadowShamanCell1) || endPointInsideCell(endPoint, cell: shadowShamanCell2)) && !isShadowShamanLineFormed {
             isShadowShamanLineFormed = true
         } else if (gestureOrigin == kingCell1 || gestureOrigin == kingCell2) &&
-                  (endPointInsideCell(endPoint, cell: kingCell1) || endPointInsideCell(endPoint, cell: kingCell2)) {
+                  (endPointInsideCell(endPoint, cell: kingCell1) || endPointInsideCell(endPoint, cell: kingCell2)) && !isKingLineFormed {
             isKingLineFormed = true
         }
 
