@@ -19,6 +19,17 @@ class DegreeViewController: UIViewController {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         return collectionView
     }()
+    
+    private let heartImage = UIImageView()
+    private let heartKekLabel = UILabel()
+    
+    public lazy var heartKekStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [heartImage, heartKekLabel])
+        stackView.axis = .horizontal
+        stackView.spacing = 8
+        return stackView
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -29,6 +40,18 @@ class DegreeViewController: UIViewController {
     private func valueDegreeKey() {
         view.addSubview(backgroundView)
         view.addSubview(mainCollectionView)
+        view.addSubview(heartKekStackView)
+        
+        heartImage.image = UIImage(named: "heart")
+        heartImage.layer.masksToBounds = true
+        heartImage.contentMode = .scaleAspectFill
+        heartImage.widthAnchor.constraint(equalToConstant: 24).isActive = true
+        heartImage.heightAnchor.constraint(equalToConstant: 24).isActive = true
+        
+        heartKekLabel.text = "0"
+        heartKekLabel.font = UIFont(name: "Stick-Regular", size: 24)
+        heartKekLabel.textColor = .white
+        heartKekLabel.translatesAutoresizingMaskIntoConstraints = false
         
         backgroundView.image = UIImage(named: "levelsBack")
         backgroundView.layer.masksToBounds = true
@@ -60,6 +83,9 @@ class DegreeViewController: UIViewController {
             let backButton = UIBarButtonItem(image: backImage, style: .plain, target: self, action: #selector(backButtonKek))
             navigationItem.leftBarButtonItem = backButton
         }
+        
+        let coinWalletBarButtonItem = UIBarButtonItem(customView: heartKekStackView)
+        navigationItem.rightBarButtonItem = coinWalletBarButtonItem
         
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }

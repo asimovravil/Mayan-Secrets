@@ -25,6 +25,16 @@ class PlayViewController: UIViewController {
     
     private var drawingLayers: [CAShapeLayer] = []
     private var currentDrawingPath: UIBezierPath?
+    
+    private let heartImage = UIImageView()
+    private let heartKekLabel = UILabel()
+    
+    public lazy var heartKekStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [heartImage, heartKekLabel])
+        stackView.axis = .horizontal
+        stackView.spacing = 8
+        return stackView
+    }()
 
     // MARK: - Lifecycle
     
@@ -63,6 +73,18 @@ class PlayViewController: UIViewController {
         view.addSubview(shadowShamanCell2)
         view.addSubview(kingCell1)
         view.addSubview(kingCell2)
+        view.addSubview(heartKekStackView)
+        
+        heartImage.image = UIImage(named: "heart")
+        heartImage.layer.masksToBounds = true
+        heartImage.contentMode = .scaleAspectFill
+        heartImage.widthAnchor.constraint(equalToConstant: 24).isActive = true
+        heartImage.heightAnchor.constraint(equalToConstant: 24).isActive = true
+        
+        heartKekLabel.text = "0"
+        heartKekLabel.font = UIFont(name: "Stick-Regular", size: 24)
+        heartKekLabel.textColor = .white
+        heartKekLabel.translatesAutoresizingMaskIntoConstraints = false
         
         gameBack.image = UIImage(named: "gameBack")
         gameBack.layer.masksToBounds = true
@@ -137,6 +159,9 @@ class PlayViewController: UIViewController {
             let backButton = UIBarButtonItem(image: backImage, style: .plain, target: self, action: #selector(backButtonKek))
             navigationItem.leftBarButtonItem = backButton
         }
+        
+        let coinWalletBarButtonItem = UIBarButtonItem(customView: heartKekStackView)
+        navigationItem.rightBarButtonItem = coinWalletBarButtonItem
         
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }

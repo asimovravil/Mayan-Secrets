@@ -19,6 +19,15 @@ class BuyViewController: UIViewController {
     private let coin200Button = UIButton()
     private let wallpapersImage = UIImageView()
     private let wallpapersButton = UIButton()
+    private let heartImage = UIImageView()
+    private let heartKekLabel = UILabel()
+    
+    public lazy var heartKekStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [heartImage, heartKekLabel])
+        stackView.axis = .horizontal
+        stackView.spacing = 8
+        return stackView
+    }()
 
     // MARK: - Lifecycle
     
@@ -40,6 +49,18 @@ class BuyViewController: UIViewController {
         view.addSubview(coin200Button)
         view.addSubview(wallpapersImage)
         view.addSubview(wallpapersButton)
+        view.addSubview(heartKekStackView)
+        
+        heartImage.image = UIImage(named: "heart")
+        heartImage.layer.masksToBounds = true
+        heartImage.contentMode = .scaleAspectFill
+        heartImage.widthAnchor.constraint(equalToConstant: 24).isActive = true
+        heartImage.heightAnchor.constraint(equalToConstant: 24).isActive = true
+        
+        heartKekLabel.text = "0"
+        heartKekLabel.font = UIFont(name: "Stick-Regular", size: 24)
+        heartKekLabel.textColor = .white
+        heartKekLabel.translatesAutoresizingMaskIntoConstraints = false
         
         shopBack.image = UIImage(named: "buyBack")
         shopBack.layer.masksToBounds = true
@@ -134,6 +155,9 @@ class BuyViewController: UIViewController {
             let backButton = UIBarButtonItem(image: backImage, style: .plain, target: self, action: #selector(backButtonKek))
             navigationItem.leftBarButtonItem = backButton
         }
+        
+        let coinWalletBarButtonItem = UIBarButtonItem(customView: heartKekStackView)
+        navigationItem.rightBarButtonItem = coinWalletBarButtonItem
         
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }

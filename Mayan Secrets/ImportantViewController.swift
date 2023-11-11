@@ -15,6 +15,15 @@ class ImportantViewController: UIViewController {
     private let but2button = UIButton()
     private let but3button = UIButton()
     private let but4button = UIButton()
+    private let heartImage = UIImageView()
+    private let heartKekLabel = UILabel()
+    
+    public lazy var heartKekStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [heartImage, heartKekLabel])
+        stackView.axis = .horizontal
+        stackView.spacing = 8
+        return stackView
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +38,18 @@ class ImportantViewController: UIViewController {
         view.addSubview(but2button)
         view.addSubview(but3button)
         view.addSubview(but4button)
+        view.addSubview(heartKekStackView)
+        
+        heartImage.image = UIImage(named: "heart")
+        heartImage.layer.masksToBounds = true
+        heartImage.contentMode = .scaleAspectFill
+        heartImage.widthAnchor.constraint(equalToConstant: 24).isActive = true
+        heartImage.heightAnchor.constraint(equalToConstant: 24).isActive = true
+        
+        heartKekLabel.text = "0"
+        heartKekLabel.font = UIFont(name: "Stick-Regular", size: 24)
+        heartKekLabel.textColor = .white
+        heartKekLabel.translatesAutoresizingMaskIntoConstraints = false
         
         importantBack.image = UIImage(named: "importantBack")
         importantBack.layer.masksToBounds = true
@@ -55,6 +76,9 @@ class ImportantViewController: UIViewController {
         but4button.setImage(UIImage(named: "but4button"), for: .normal)
         but4button.addTarget(self, action: #selector(but4buttonKek), for: .touchUpInside)
         but4button.translatesAutoresizingMaskIntoConstraints = false
+        
+        let coinWalletBarButtonItem = UIBarButtonItem(customView: heartKekStackView)
+        navigationItem.rightBarButtonItem = coinWalletBarButtonItem
         
         if UIScreen.main.bounds.size.height >= 812 {
             NSLayoutConstraint.activate([
