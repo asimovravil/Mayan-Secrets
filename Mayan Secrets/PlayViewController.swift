@@ -249,7 +249,7 @@ class PlayViewController: UIViewController {
     }
     
     private func navigateToWinController() {
-        let controller = ImportantViewController()
+        let controller = VictoryViewController()
         controller.navigationItem.hidesBackButton = true
         navigationController?.pushViewController(controller, animated: true)
     }
