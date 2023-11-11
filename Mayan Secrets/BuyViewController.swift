@@ -38,6 +38,13 @@ class BuyViewController: UIViewController {
         setupTitleLawView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let coinPriceLolKek = UserDefaults.standard.integer(forKey: "coinPriceLolKek")
+        coinPrice.text = "\(coinPriceLolKek)"
+    }
+    
     private func valueLawKey() {
         view.addSubview(shopBack)
         view.addSubview(coinYellowKekImageView)

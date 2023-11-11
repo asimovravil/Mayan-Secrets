@@ -12,6 +12,17 @@ class VictoryViewController: UIViewController {
     private let winBack = UIImageView()
     private let homeWinKekButton = UIButton()
     private let nextLevelWinKekButton = UIButton()
+    private let coinPrice = UILabel()
+    
+    var scoreLolKekCoin: Int {
+        get {
+            return UserDefaults.standard.integer(forKey: "coinPriceLolKek")
+        }
+        set {
+            UserDefaults.standard.setValue(newValue, forKey: "coinPriceLolKek")
+            coinPrice.text = "\(newValue)"
+        }
+    }
 
     // MARK: - Lifecycle
     
@@ -65,12 +76,14 @@ class VictoryViewController: UIViewController {
     
     @objc private func homePlayWinButtonKek() {
         let controller = ImportantViewController()
+        scoreLolKekCoin += 50
         controller.navigationItem.hidesBackButton = true
         navigationController?.pushViewController(controller, animated: true)
     }
     
     @objc private func nextLevelWinKekButtonKek() {
         let controller = DegreeViewController()
+        scoreLolKekCoin += 50
         controller.navigationItem.hidesBackButton = true
         navigationController?.pushViewController(controller, animated: true)
     }
