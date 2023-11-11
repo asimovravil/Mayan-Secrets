@@ -17,6 +17,9 @@ class PlayViewController: UIViewController {
     private let shadowShamanCell2 = UIImageView()
     private let kingCell1 = UIImageView()
     private let kingCell2 = UIImageView()
+    
+    private var drawingLayers: [CAShapeLayer] = []
+    private var currentDrawingPath: UIBezierPath?
 
     // MARK: - Lifecycle
     
@@ -25,6 +28,25 @@ class PlayViewController: UIViewController {
         
         valueGameKey()
         setupTitleLawView()
+        setupGestureRecognizers()
+    }
+    
+    private func setupGestureRecognizers() {
+        let shadowShamanGesture1 = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:)))
+        shadowShamanCell1.addGestureRecognizer(shadowShamanGesture1)
+        shadowShamanCell1.isUserInteractionEnabled = true
+
+        let shadowShamanGesture2 = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:)))
+        shadowShamanCell2.addGestureRecognizer(shadowShamanGesture2)
+        shadowShamanCell2.isUserInteractionEnabled = true
+
+        let kingGesture1 = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:)))
+        kingCell1.addGestureRecognizer(kingGesture1)
+        kingCell1.isUserInteractionEnabled = true
+
+        let kingGesture2 = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:)))
+        kingCell2.addGestureRecognizer(kingGesture2)
+        kingCell2.isUserInteractionEnabled = true
     }
     
     private func valueGameKey() {
@@ -138,5 +160,50 @@ class PlayViewController: UIViewController {
         let controller = ImportantViewController()
         controller.navigationItem.hidesBackButton = true
         self.navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    @objc private func handlePanGesture(_ gesture: UIPanGestureRecognizer) {
+        guard let draggedView = gesture.view else { return }
+
+        let location = gesture.location(in: view)
+
+        switch gesture.state {
+        case .began:
+            startDrawing(from: draggedView.center, draggedView: draggedView)
+        case .changed:
+            updateDrawingPath(to: location)
+        case .ended:
+            finishDrawing(to: location)
+        default:
+            break
+        }
+    }
+
+    private func startDrawing(from startPoint: CGPoint, draggedView: UIView) {
+        let newLayer = CAShapeLayer()
+        currentDrawingPath = UIBezierPath()
+        currentDrawingPath?.move(to: startPoint)
+
+        if draggedView == shadowShamanCell1 || draggedView == shadowShamanCell2 {
+            newLayer.strokeColor = UIColor.yellow.cgColor
+        } else if draggedView == kingCell1 || draggedView == kingCell2 {
+            newLayer.strokeColor = UIColor.orange.cgColor
+        }
+
+        newLayer.lineWidth = 5
+        newLayer.fillColor = nil
+
+        view.layer.addSublayer(newLayer)
+        drawingLayers.append(newLayer)
+    }
+
+    private func updateDrawingPath(to point: CGPoint) {
+        currentDrawingPath?.addLine(to: point)
+        drawingLayers.last?.path = currentDrawingPath?.cgPath
+    }
+
+    private func finishDrawing(to endPoint: CGPoint) {
+        currentDrawingPath?.addLine(to: endPoint)
+        drawingLayers.last?.path = currentDrawingPath?.cgPath
     }
 }
