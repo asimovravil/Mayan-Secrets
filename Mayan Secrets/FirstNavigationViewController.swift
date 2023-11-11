@@ -21,9 +21,8 @@ class FirstNavigationViewController: UIViewController {
     }
     
     private func valueKey() {
-        [backbackbacksplash, lololoading].forEach() {
-            view.addSubview($0)
-        }
+        view.addSubview(backbackbacksplash)
+        view.addSubview(lololoading)
         circleLogicSplashAnimation()
         
         lololoading.image = UIImage(named: "lololoading")

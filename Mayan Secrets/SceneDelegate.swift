@@ -15,7 +15,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(windowScene: scene)
         window?.overrideUserInterfaceStyle = .dark
-        window?.rootViewController = FirstNavigationViewController()
+        window?.rootViewController = ImportantViewController()
         window?.makeKeyAndVisible()
     }
 }

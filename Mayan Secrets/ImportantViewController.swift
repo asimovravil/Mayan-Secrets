@@ -1,0 +1,88 @@
+//
+//  ImportantViewController.swift
+//  Mayan Secrets
+//
+//  Created by Ravil on 11.11.2023.
+//
+
+import UIKit
+
+class ImportantViewController: UIViewController {
+
+    private let importantBack = UIImageView()
+    private let avatar = UIImageView()
+    private let but1button = UIButton()
+    private let but2button = UIButton()
+    private let but3button = UIButton()
+    private let but4button = UIButton()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        valueKey()
+    }
+    
+    private func valueKey() {
+        view.addSubview(importantBack)
+        view.addSubview(avatar)
+        view.addSubview(but1button)
+        view.addSubview(but2button)
+        view.addSubview(but3button)
+        view.addSubview(but4button)
+        
+        importantBack.image = UIImage(named: "importantBack")
+        importantBack.layer.masksToBounds = true
+        importantBack.contentMode = .scaleAspectFill
+        importantBack.translatesAutoresizingMaskIntoConstraints = false
+        
+        avatar.image = UIImage(named: "avatar")
+        avatar.layer.masksToBounds = true
+        avatar.contentMode = .scaleAspectFill
+        avatar.translatesAutoresizingMaskIntoConstraints = false
+        
+        but1button.setImage(UIImage(named: "but1button"), for: .normal)
+        but1button.translatesAutoresizingMaskIntoConstraints = false
+
+        but2button.setImage(UIImage(named: "but2button"), for: .normal)
+        but2button.translatesAutoresizingMaskIntoConstraints = false
+
+        but3button.setImage(UIImage(named: "but3button"), for: .normal)
+        but3button.translatesAutoresizingMaskIntoConstraints = false
+
+        but4button.setImage(UIImage(named: "but4button"), for: .normal)
+        but4button.translatesAutoresizingMaskIntoConstraints = false
+        
+        if UIScreen.main.bounds.size.height >= 812 {
+            NSLayoutConstraint.activate([
+                avatar.topAnchor.constraint(equalTo: view.topAnchor, constant: 80),
+                but4button.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -85),
+            ])
+        } else {
+            NSLayoutConstraint.activate([
+                avatar.topAnchor.constraint(equalTo: view.topAnchor, constant: -40),
+                but4button.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20),
+            ])
+        }
+        
+        NSLayoutConstraint.activate([
+            importantBack.topAnchor.constraint(equalTo: view.topAnchor),
+            importantBack.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            importantBack.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            importantBack.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            
+            avatar.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: -20),
+            avatar.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 20),
+            
+            but1button.bottomAnchor.constraint(equalTo: but2button.topAnchor, constant: -24),
+            but1button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
+            but2button.bottomAnchor.constraint(equalTo: but3button.topAnchor, constant: -24),
+            but2button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
+            but3button.bottomAnchor.constraint(equalTo: but4button.topAnchor, constant: -24),
+            but3button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
+            but4button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+        ])
+    }
+}
